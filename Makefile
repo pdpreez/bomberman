@@ -6,11 +6,11 @@
 #    By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/03 13:36:13 by ppreez            #+#    #+#              #
-#    Updated: 2019/08/11 10:39:27 by ppreez           ###   ########.fr        #
+#    Updated: 2019/08/11 12:03:30 by ppreez           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = nibbler
+NAME = bomberman
 
 SRC_PATH = ./src/
 OBJ_PATH = ./obj/
@@ -19,7 +19,7 @@ SO_PATH = ./shared/
 G_SRC_PATH = $(SRC_PATH)graphics/
 DEP_PATH = ./dependencies
 
-SRC_FILE = 
+SRC_FILE = main.cpp
 
 OBJ_FILE = $(SRC_FILE:%.cpp=%.o)
 
@@ -51,7 +51,7 @@ $(NAME): $(SRC_PATH) $(OBJ_PATH) $(INC_PATH) $(OBJ) $(SO_PATH) shared_obj
 	$(CC) -o $@ $(OBJ)
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.cpp
-	$(CC) -I$(INC_PATH) -o $@ -c $<
+	$(CC) -I$(INC_PATH) $(GLFW_INC) $(GLAD_INC) -o $@ -c $<
 
 $(OBJ_PATH):
 	mkdir -p $(OBJ_PATH)
