@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 08:18:10 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/07 15:05:30 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/12 10:45:56 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,11 @@ class Shader
         void setInt(const std::string &name, int value) const;
         void setFloat(const std::string &name, float value) const;
         void setVec2(const std::string &name, float x, float y) const;
+        void setMat2(const std::string &name, glm::mat2 &mat) const;
         void setVec3(const std::string &name, float x, float y, float z) const;
+        void setMat3(const std::string &name, glm::mat3 &mat) const;
         void setVec4(const std::string &name, float x, float y, float z, float w) const;
+        void setMat4(const std::string &name, glm::mat4 &mat) const;
 
     private:
         Shader();

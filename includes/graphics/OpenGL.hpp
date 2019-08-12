@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/14 12:23:26 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/12 09:36:14 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/12 11:01:14 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 #include "glad/glad.h"
 #include "GLFW/glfw3.h"
 #include "glm/glm.hpp"
+#include "glm/gtc/matrix_transform.hpp"
+#include "glm/gtc/type_ptr.hpp"
 #include "IGlib.hpp"
 #include "Shader.hpp"
 #include "KeyCodes.hpp"
@@ -39,6 +41,8 @@ class OpenGL: public IGlib
         virtual void createWindow();
         virtual void closeWindow();
         virtual int retrieveInput();
+
+        virtual void drawCube();
     private:
         OpenGL();
         GLFWwindow *m_window;
@@ -47,7 +51,7 @@ class OpenGL: public IGlib
         unsigned int m_height;
         unsigned int m_vertexArray;
         unsigned int m_vertexBuffer;
-        unsigned int m_elementBuffer;
+        // unsigned int m_elementBuffer;
 
         void initialise();
         static void error_callback(int error, const char *description);

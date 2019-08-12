@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 09:48:23 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/12 10:06:07 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/12 11:00:38 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ void Game::run()
     {
         process_input();
         glib->startFrame();
+        glib->drawCube();
         glib->endFrame();
     }
     glib->closeWindow();
