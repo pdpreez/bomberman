@@ -6,7 +6,7 @@
 #    By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/03 13:36:13 by ppreez            #+#    #+#              #
-#    Updated: 2019/08/11 12:36:45 by ppreez           ###   ########.fr        #
+#    Updated: 2019/08/12 10:04:16 by ppreez           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SO_PATH = ./shared/
 G_SRC_PATH = $(SRC_PATH)graphics/
 DEP_PATH = ./dependencies
 
-SRC_FILE = main.cpp
+SRC_FILE = main.cpp Game.cpp
 
 OBJ_FILE = $(SRC_FILE:%.cpp=%.o)
 
@@ -37,9 +37,11 @@ GLFW_INC = -I $(DEP_PATH)/glfw/include/
 GLAD_INC = -I $(DEP_PATH)/glad/include/
 GLM_INC = -I $(DEP_PATH)/glm/
 
-all: $(NAME) 
+ASSIMP_INC = -I $(DEP_PATH)/assimp/include/
 
-install: $(OBJ_PATH) setup glad_install
+all: $(NAME)
+
+install: $(OBJ_PATH) setup glad
 
 cmake:
 	cmake_install
@@ -80,10 +82,14 @@ opengl:
 	$(CC) -c $(G_SRC_PATH)Shader.cpp -o $(OBJ_PATH)Shader.o -I $(INC_PATH) $(GLAD_INC) $(GLFW_INC) $(GLM_INC)
 	$(CC) -shared $(OBJ_PATH)OpenGL.o $(OBJ_PATH)Shader.o $(OBJ_PATH)glad.o -o $(SO_PATH)OpenGL.so $(GLFWA_INC) $(GLFW)
 
-glad_install: $(DEP_PATH)/glad/src/glad.c $(OBJ_PATH)
+glad: $(DEP_PATH)/glad/src/glad.c $(OBJ_PATH)
 	~/.brew/Cellar/cmake/3.15.1/bin/cmake -S $(DEP_PATH)/glfw/ -B $(DEP_PATH)/glfw/
 	make -C $(DEP_PATH)/glfw/
 	gcc -I $(DEP_PATH)/glad/include/ -c $(DEP_PATH)/glad/src/glad.c -o ./obj/glad.o
+
+assimp:
+	~/.brew/Cellar/cmake/3.15.1/bin/cmake -S $(DEP_PATH)/assimp/ -B $(DEP_PATH)/assimp/
+	make install -C $(DEP_PATH)/assimp/
 
 cmake_install:
 	~/.brew/bin/brew install cmake

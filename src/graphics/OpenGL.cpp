@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/14 12:59:07 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/11 11:09:32 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/12 09:46:50 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,7 +145,7 @@ int OpenGL::retrieveInput()
 
 void OpenGL::startFrame()
 {
-    glClearColor(0.0, 0.2, 0.2, 1.0);
+    glClearColor(0.2, 0.2, 0.2, 1.0);
     glClear(GL_COLOR_BUFFER_BIT);
     m_shader->use();
     glBindVertexArray(m_vertexArray);
