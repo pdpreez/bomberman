@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/14 12:59:07 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/12 11:20:52 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/12 11:23:10 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,7 +223,7 @@ void OpenGL::drawCube()
 
     glm::mat4 proj = glm::perspective(glm::radians(45.0f), (float)m_width / (float)m_height, 0.1f, 100.0f) ;
     m_shader->setMat4("proj", proj);
-    glm::mat4 view = glm::lookAt(cameraPos + 1.0f, cameraPos + cameraFront, cameraUp);
+    glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
     m_shader->setMat4("view", view);
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
