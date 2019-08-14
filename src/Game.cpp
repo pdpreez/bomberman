@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 09:48:23 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/14 11:39:32 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/14 15:35:31 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void Game::run()
     }
     while (m_running)
     {
-        process_input();
+        process_input(glib->getDeltaTime());
         glib->startFrame();
         glib->drawCube();
         glib->endFrame();
@@ -80,10 +80,12 @@ IGlib *Game::open_glib(const char *path)
     return (*func)(m_width, m_height);
 }
 
-void Game::process_input()
+void Game::process_input(float deltaTime)
 {
     unsigned int key;
     key = glib->retrieveInput();
     if (key == KEY_ESCAPE)
         m_running = false;
+    glib->moveCamera(key, deltaTime);
+    
 }

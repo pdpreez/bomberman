@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 12:46:26 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/14 11:41:12 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/14 15:49:47 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,29 @@
 #include "glm/glm.hpp"
 #include "glm/gtc/matrix_transform.hpp"
 #include "glm/gtc/type_ptr.hpp"
+#include <iostream>
 
 const float YAW = -90.0f;
 const float PITCH = 0.0f;
-const float SPEED = 0.01f;
+const float SPEED = 0.001f;
 const float SENSITIVITY = 0.01f;
 const float FOV = 65.0f;
+
+
+enum CameraMovement
+{
+    NONE,
+    FORWARD,
+    BACKWARD,
+    LEFT,
+    RIGHT,
+    UP,
+    DOWN,
+    PITCH_DOWN,
+    PITCH_UP,
+    YAW_LEFT,
+    YAW_RIGHT
+};
 
 class Camera
 {
@@ -33,6 +50,7 @@ class Camera
 
         float getFOV();
         glm::mat4 get_view_matrix();
+        void keyboard_move(CameraMovement dir, float deltaTime);
     private:
         Camera();
         

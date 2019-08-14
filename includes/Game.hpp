@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 09:48:42 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/12 10:02:49 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/14 15:31:01 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ class Game
         unsigned int m_height;
         bool         m_running;
 
-        void process_input();
+        void process_input(float deltaTime);
         IGlib *open_glib(const char *path);
 };
 

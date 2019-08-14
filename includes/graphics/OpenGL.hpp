@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/14 12:23:26 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/14 11:30:59 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/14 15:35:37 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ class OpenGL: public IGlib
         virtual int retrieveInput();
 
         virtual void drawCube();
+        virtual float getDeltaTime();
+        virtual void moveCamera(unsigned int key, float deltaTime);
     private:
         OpenGL();
         GLFWwindow *m_window;
@@ -61,6 +63,8 @@ class OpenGL: public IGlib
         unsigned int m_height;
         unsigned int m_vertexArray;
         unsigned int m_vertexBuffer;
+        float m_delta_time;
+        float m_last_frame;
         // unsigned int m_elementBuffer;
 
         void initialise();

@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/14 12:59:07 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/14 11:49:09 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/14 16:07:54 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 OpenGL::OpenGL()
 :m_camera(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 1.0f, 0.0f), YAW, PITCH)
 {
+    initialise();
 }
 
 OpenGL::OpenGL(unsigned int width, unsigned int height)
@@ -62,6 +63,8 @@ void OpenGL::initialise()
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwSetErrorCallback(error_callback);
+    m_delta_time = 0.0f;
+    m_last_frame = 0.0f;
     
 }
 
@@ -188,6 +191,18 @@ int OpenGL::retrieveInput()
         return KEY_LEFT;
     if (glfwGetKey(m_window, GLFW_KEY_RIGHT) == GLFW_PRESS)
         return KEY_RIGHT;
+    if (glfwGetKey(m_window, GLFW_KEY_W) == GLFW_PRESS)
+        return KEY_W;
+    if (glfwGetKey(m_window, GLFW_KEY_S) == GLFW_PRESS)
+        return KEY_S;
+    if (glfwGetKey(m_window, GLFW_KEY_A) == GLFW_PRESS)
+        return KEY_A;
+    if (glfwGetKey(m_window, GLFW_KEY_D) == GLFW_PRESS)
+        return KEY_D;
+    if (glfwGetKey(m_window, GLFW_KEY_R) == GLFW_PRESS)
+        return KEY_R;
+    if (glfwGetKey(m_window, GLFW_KEY_F) == GLFW_PRESS)
+        return KEY_F;
     if (glfwGetKey(m_window, GLFW_KEY_1) == GLFW_PRESS)
         return KEY_1;
     if (glfwGetKey(m_window, GLFW_KEY_2) == GLFW_PRESS)
@@ -200,6 +215,9 @@ int OpenGL::retrieveInput()
 
 void OpenGL::startFrame()
 {
+    float currentFrame = glfwGetTime();
+    m_delta_time -= currentFrame - m_last_frame;
+    m_last_frame = currentFrame;
     glClearColor(0.2, 0.2, 0.2, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     m_shader->use();
@@ -235,10 +253,42 @@ void OpenGL::drawCube()
     model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
     m_shader->setMat4("model", model);
     
-    m_shader->setVec3("color", 1.0f, 0.0f, 0.0f);
+    m_shader->setVec3("color", 1.0f, 0.0f, 1.0f);
     m_shader->use();
     
     glDrawArrays(GL_TRIANGLES, 0, 36);
+}
+
+void OpenGL::moveCamera(unsigned int key, float deltaTime)
+{
+    CameraMovement dir = NONE;
+    if (key == KEY_UP)
+        dir = UP;
+    else if (key == KEY_DOWN)
+        dir = DOWN;
+    else if (key == KEY_LEFT)
+        dir = YAW_LEFT;
+    else if (key == KEY_RIGHT)
+        dir = YAW_RIGHT;
+    else if (key == KEY_W)
+        dir = FORWARD;
+    else if (key == KEY_A)
+        dir = LEFT;
+    else if (key == KEY_S)
+        dir = BACKWARD;
+    else if (key == KEY_D)
+        dir = RIGHT;
+    else if (key == KEY_R)
+        dir = PITCH_UP;
+    else if (key == KEY_F)
+        dir = PITCH_DOWN;
+    if (dir != NONE)
+        m_camera.keyboard_move(dir, deltaTime);
+}
+
+float OpenGL::getDeltaTime()
+{
+    return m_delta_time;
 }
 
 extern "C"

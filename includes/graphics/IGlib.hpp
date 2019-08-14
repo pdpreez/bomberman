@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/14 12:16:50 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/12 11:01:04 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/14 15:35:46 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ class IGlib
         virtual void createWindow() = 0;
         virtual void closeWindow() = 0;
         virtual int retrieveInput() = 0;
+        virtual float getDeltaTime() = 0;
+        virtual void moveCamera(unsigned int key, float deltaTime) = 0;
 };
 
 #endif
