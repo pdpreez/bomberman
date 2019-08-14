@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/14 12:23:26 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/12 11:01:14 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/14 11:30:59 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@
 #include "IGlib.hpp"
 #include "Shader.hpp"
 #include "KeyCodes.hpp"
+#include "Camera.hpp"
+
+struct s_color
+{
+    unsigned char r;
+    unsigned char g;
+    unsigned char b;
+    unsigned char a;
+};
 
 class Shader;
 
@@ -47,6 +56,7 @@ class OpenGL: public IGlib
         OpenGL();
         GLFWwindow *m_window;
         Shader *m_shader;
+        Camera m_camera;
         unsigned int m_width;
         unsigned int m_height;
         unsigned int m_vertexArray;

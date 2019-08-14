@@ -6,7 +6,7 @@
 #    By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/06/03 13:36:13 by ppreez            #+#    #+#              #
-#    Updated: 2019/08/12 10:04:16 by ppreez           ###   ########.fr        #
+#    Updated: 2019/08/14 11:40:55 by ppreez           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -80,7 +80,8 @@ shared_obj: opengl
 opengl:
 	$(CC) -c $(G_SRC_PATH)OpenGL.cpp -o $(OBJ_PATH)OpenGL.o -I $(INC_PATH) $(GLAD_INC) $(GLFW_INC) $(GLM_INC)
 	$(CC) -c $(G_SRC_PATH)Shader.cpp -o $(OBJ_PATH)Shader.o -I $(INC_PATH) $(GLAD_INC) $(GLFW_INC) $(GLM_INC)
-	$(CC) -shared $(OBJ_PATH)OpenGL.o $(OBJ_PATH)Shader.o $(OBJ_PATH)glad.o -o $(SO_PATH)OpenGL.so $(GLFWA_INC) $(GLFW)
+	$(CC) -c $(G_SRC_PATH)Camera.cpp -o $(OBJ_PATH)Camera.o -I $(INC_PATH) $(GLAD_INC) $(GLFW_INC) $(GLM_INC)
+	$(CC) -shared $(OBJ_PATH)OpenGL.o $(OBJ_PATH)Shader.o $(OBJ_PATH)Camera.o $(OBJ_PATH)glad.o -o $(SO_PATH)OpenGL.so $(GLFWA_INC) $(GLFW)
 
 glad: $(DEP_PATH)/glad/src/glad.c $(OBJ_PATH)
 	~/.brew/Cellar/cmake/3.15.1/bin/cmake -S $(DEP_PATH)/glfw/ -B $(DEP_PATH)/glfw/

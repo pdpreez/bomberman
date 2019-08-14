@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/14 12:59:07 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/12 11:23:10 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/14 11:49:09 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,25 @@
 
  // Constructors 
 
+
+    glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
+    glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
+    glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
+
 OpenGL::OpenGL()
+:m_camera(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 1.0f, 0.0f), YAW, PITCH)
 {
 }
 
 OpenGL::OpenGL(unsigned int width, unsigned int height)
-:m_width(width), m_height(height)
+:m_camera(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 1.0f, 0.0f), YAW, PITCH),
+m_width(width), m_height(height)
 {
     initialise();
 }
 
 OpenGL::OpenGL(OpenGL const &rhs)
+:m_camera(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 1.0f, 0.0f), YAW, PITCH)
 {
     *this = rhs;
 }
@@ -171,23 +179,23 @@ void OpenGL::closeWindow()
 int OpenGL::retrieveInput()
 {
     if (glfwGetKey(m_window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-        return EXIT;
+        return KEY_ESCAPE;
     if (glfwGetKey(m_window, GLFW_KEY_UP) == GLFW_PRESS)
-        return UP;
+        return KEY_UP;
     if (glfwGetKey(m_window, GLFW_KEY_DOWN) == GLFW_PRESS)
-        return DOWN;
+        return KEY_DOWN;
     if (glfwGetKey(m_window, GLFW_KEY_LEFT) == GLFW_PRESS)
-        return LEFT;
+        return KEY_LEFT;
     if (glfwGetKey(m_window, GLFW_KEY_RIGHT) == GLFW_PRESS)
-        return RIGHT;
+        return KEY_RIGHT;
     if (glfwGetKey(m_window, GLFW_KEY_1) == GLFW_PRESS)
-        return OPENGL_KEY;
+        return KEY_1;
     if (glfwGetKey(m_window, GLFW_KEY_2) == GLFW_PRESS)
-        return SDL_KEY;
+        return KEY_2;
     if (glfwGetKey(m_window, GLFW_KEY_3) == GLFW_PRESS)
-        return SFML_KEY;
+        return KEY_3;
     else
-        return NONE;
+        return KEY_NONE;
 }
 
 void OpenGL::startFrame()
@@ -217,17 +225,16 @@ void OpenGL::drawSquare(unsigned int x, unsigned int y, struct s_color color)
 
 void OpenGL::drawCube()
 {
-    glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
-    glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-    glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
-
-    glm::mat4 proj = glm::perspective(glm::radians(45.0f), (float)m_width / (float)m_height, 0.1f, 100.0f) ;
+    glm::mat4 proj = glm::perspective(glm::radians(m_camera.getFOV()), (float)m_width / (float)m_height, 0.1f, 100.0f) ;
     m_shader->setMat4("proj", proj);
-    glm::mat4 view = glm::lookAt(cameraPos, cameraPos + cameraFront, cameraUp);
+
+    glm::mat4 view = m_camera.get_view_matrix();
     m_shader->setMat4("view", view);
+
     glm::mat4 model = glm::mat4(1.0f);
     model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
     m_shader->setMat4("model", model);
+    
     m_shader->setVec3("color", 1.0f, 0.0f, 0.0f);
     m_shader->use();
     
