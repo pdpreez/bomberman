@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/14 12:23:26 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/14 15:35:37 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/15 15:51:17 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ class OpenGL: public IGlib
 
         void initialise();
         static void error_callback(int error, const char *description);
+        static void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods);
 };
 
 extern "C"

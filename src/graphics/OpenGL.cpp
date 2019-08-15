@@ -6,18 +6,13 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/14 12:59:07 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/14 16:07:54 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/15 16:11:01 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "graphics/OpenGL.hpp"
 
  // Constructors 
-
-
-    glm::vec3 cameraPos = glm::vec3(0.0f, 0.0f, 3.0f);
-    glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
-    glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
 
 OpenGL::OpenGL()
 :m_camera(glm::vec3(0.0f, 0.0f, 3.0f), glm::vec3(0.0f, 1.0f, 0.0f), YAW, PITCH)
@@ -72,6 +67,19 @@ void OpenGL::error_callback(int error, const char *description)
 {
     std::cout << "OpenGL error: " << error << std::endl;
     std::cout << "OpenGL error: " << description << std::endl;
+}
+
+int g_key = -1;
+
+void OpenGL::key_callback(GLFWwindow *window, int key, int scancode, int action, int mods)
+{
+    (void)window;
+    (void)scancode;
+    (void)mods;
+    if (action == GLFW_PRESS || action == GLFW_REPEAT)
+    {
+        g_key = key;
+    }
 }
 
 // Public methods
@@ -149,6 +157,8 @@ void OpenGL::createWindow()
     glEnable(GL_DEPTH_TEST);
     glfwGetFramebufferSize(m_window, &width, &height);
     glViewport(0, 0, width, height);
+    glfwSetKeyCallback(m_window, key_callback);
+    glfwSetInputMode(m_window, GLFW_STICKY_KEYS, GLFW_TRUE);
     m_shader = new Shader("./shaders/vertex.vs", "./shaders/fragment.fs");
 
     if (m_shader->m_errors)
@@ -178,6 +188,17 @@ void OpenGL::closeWindow()
 {
     glfwTerminate();
 }
+
+// int OpenGL::retrieveInput()
+// {
+//     int key = g_key;
+//     if (g_key != 0)
+//     {
+//         g_key = 0;
+//         return key;
+//     }
+//     return g_key;
+// }
 
 int OpenGL::retrieveInput()
 {

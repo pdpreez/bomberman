@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 12:51:36 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/14 16:22:47 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/15 16:01:45 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void Camera::update_camera_vectors()
     glm::vec3 f;
 
     (void)m_sensitivity;
-    f.x = cos(glm::radians(m_yaw) * cos(glm::radians(m_pitch)));
+    f.x = cos(glm::radians(m_yaw));// * cos(glm::radians(m_pitch)));
     f.y = sin(glm::radians(m_pitch));
     f.z = sin(glm::radians(m_yaw) * cos(glm::radians(m_pitch)));
     
@@ -74,11 +74,12 @@ float Camera::getFOV()
 
 void Camera::keyboard_move(CameraMovement dir, float deltaTime)
 {
-    float velocity = m_movement_speed * deltaTime;
+    (void)deltaTime;
+    float velocity = m_movement_speed;
     if (dir == FORWARD)
-        m_pos -= m_front * velocity;
+        m_pos.z -= m_front.z * velocity;
     else if (dir == BACKWARD)
-        m_pos += m_front * velocity;
+        m_pos.z += m_front.z * velocity;
     else if (dir == LEFT)
         m_pos += m_right * velocity;
     else if (dir == RIGHT)
