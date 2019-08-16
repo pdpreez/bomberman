@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/14 12:23:26 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/16 10:04:54 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/16 12:15:06 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,11 +58,13 @@ class OpenGL: public IGlib
         OpenGL();
         GLFWwindow *m_window;
         Shader *m_shader;
+        Shader *m_light_shader;
         Camera m_camera;
         unsigned int m_width;
         unsigned int m_height;
         unsigned int m_vertexArray;
         unsigned int m_vertexBuffer;
+        unsigned int m_lightVAO;
         float m_delta_time;
         float m_last_frame;
         // unsigned int m_elementBuffer;

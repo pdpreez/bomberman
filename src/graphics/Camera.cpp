@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 12:51:36 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/16 11:32:10 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/16 12:37:20 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void Camera::update_camera_vectors()
     glm::vec3 f;
 
     (void)m_sensitivity;
-    f.x = cos(glm::radians(m_yaw));// * cos(glm::radians(m_pitch)));
+    f.x = cos(glm::radians(m_yaw)) * cos(glm::radians(m_pitch));
     f.y = sin(glm::radians(m_pitch));
     f.z = sin(glm::radians(m_yaw) * cos(glm::radians(m_pitch)));
     
@@ -97,5 +97,9 @@ void Camera::keyboard_move(CameraMovement dir, float deltaTime)
         m_pitch -=  speed * velocity;
     else if (dir == PITCH_DOWN)
         m_pitch +=  speed * velocity;
+    if (m_pitch > 89.0f)
+        m_pitch = 89.0f;
+    if (m_pitch < -89.0f)
+        m_pitch = -89.0f;
     update_camera_vectors();
 }

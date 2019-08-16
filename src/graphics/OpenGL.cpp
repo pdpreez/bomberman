@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/14 12:59:07 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/16 11:21:49 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/16 13:11:13 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,18 +71,6 @@ void OpenGL::error_callback(int error, const char *description)
 
 int g_key = -1;
 
-void OpenGL::key_callback(GLFWwindow *window, int key, int scancode, int action, int mods)
-{
-    (void)window;
-    (void)scancode;
-    (void)mods;
-    (void)action;
-    // if (action == GLFW_PRESS || action == GLFW_REPEAT)
-    // {
-        g_key = key;
-    // }
-}
-
 // Public methods
 
 void OpenGL::createWindow()
@@ -91,63 +79,48 @@ void OpenGL::createWindow()
     
 
     float vertices[] = {
-    -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
-     0.5f, -0.5f, -0.5f,  1.0f, 0.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, 0.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f, 0.0f, -1.0f,
+     0.5f, -0.5f, -0.5f,  1.0f, 0.0f, -1.0f,
+     0.5f,  0.5f, -0.5f,  1.0f, 1.0f, -1.0f,
+     0.5f,  0.5f, -0.5f,  1.0f, 1.0f, -1.0f,
+    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f, -1.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f, 0.0f, -1.0f,
 
-    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-     0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 1.0f,
-    -0.5f,  0.5f,  0.5f,  0.0f, 1.0f,
-    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
+    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f, 1.0f,
+     0.5f, -0.5f,  0.5f,  1.0f, 0.0f, 1.0f,
+     0.5f,  0.5f,  0.5f,  1.0f, 1.0f, 1.0f,
+     0.5f,  0.5f,  0.5f,  1.0f, 1.0f, 1.0f,
+    -0.5f,  0.5f,  0.5f,  0.0f, 1.0f, 1.0f,
+    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f, 1.0f,
 
-    -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-    -0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-    -0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+    -0.5f,  0.5f,  0.5f,  1.0f, 0.0f, 0.0f,
+    -0.5f,  0.5f, -0.5f,  1.0f, 1.0f, 0.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f, 0.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f, 0.0f,
+    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f, 0.0f,
+    -0.5f,  0.5f,  0.5f,  1.0f, 0.0f, 0.0f,
 
-     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-     0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-     0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-     0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
+     0.5f,  0.5f,  0.5f,  1.0f, 0.0f, 0.0f,
+     0.5f,  0.5f, -0.5f,  1.0f, 1.0f, 0.0f,
+     0.5f, -0.5f, -0.5f,  0.0f, 1.0f, 0.0f,
+     0.5f, -0.5f, -0.5f,  0.0f, 1.0f, 0.0f,
+     0.5f, -0.5f,  0.5f,  0.0f, 0.0f, 0.0f,
+     0.5f,  0.5f,  0.5f,  1.0f, 0.0f, 0.0f,
 
-    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
-     0.5f, -0.5f, -0.5f,  1.0f, 1.0f,
-     0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-     0.5f, -0.5f,  0.5f,  1.0f, 0.0f,
-    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f, 0.0f,
+     0.5f, -0.5f, -0.5f,  1.0f, 1.0f, 0.0f,
+     0.5f, -0.5f,  0.5f,  1.0f, 0.0f, 0.0f,
+     0.5f, -0.5f,  0.5f,  1.0f, 0.0f, 0.0f,
+    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f, 0.0f,
+    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f, 0.0f,
 
-    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 0.0f,
-    -0.5f,  0.5f,  0.5f,  0.0f, 0.0f,
-    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f
+    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f, 0.0f,
+     0.5f,  0.5f, -0.5f,  1.0f, 1.0f, 0.0f,
+     0.5f,  0.5f,  0.5f,  1.0f, 0.0f, 0.0f,
+     0.5f,  0.5f,  0.5f,  1.0f, 0.0f, 0.0f,
+    -0.5f,  0.5f,  0.5f,  0.0f, 0.0f, 0.0f,
+    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f, 0.0f
 };
-
-    // float vertices[] = 
-    // {
-    //      1.0,  1.0,
-    //      1.0,  0.0,
-    //      0.0,  0.0,
-    //      0.0,  1.0
-    // };
-    
-
-    // unsigned int indices[] =
-    // {
-    //     0, 1, 3,
-    //     1, 2, 3
-    // };
 
 
     m_window = glfwCreateWindow(m_width, m_height, "Bomberman", nullptr, nullptr);
@@ -158,31 +131,40 @@ void OpenGL::createWindow()
     glEnable(GL_DEPTH_TEST);
     glfwGetFramebufferSize(m_window, &width, &height);
     glViewport(0, 0, width, height);
-    glfwSetKeyCallback(m_window, key_callback);
     glfwSetInputMode(m_window, GLFW_STICKY_KEYS, GLFW_TRUE);
+    m_light_shader = new Shader("./shaders/lightvertex.vs", "./shaders/lightfragment.fs");
     m_shader = new Shader("./shaders/vertex.vs", "./shaders/fragment.fs");
-
     if (m_shader->m_errors)
     {
         glfwTerminate();
         exit(1);
     }
+
+    
     glGenVertexArrays(1, &m_vertexArray);
     glGenBuffers(1, &m_vertexBuffer);
     // glGenBuffers(1, &m_elementBuffer);
 
-    glBindVertexArray(m_vertexArray);
     glBindBuffer(GL_ARRAY_BUFFER, m_vertexBuffer);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), &vertices, GL_STATIC_DRAW);
+    glBindVertexArray(m_vertexArray);
 
     // glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_elementBuffer);
     // glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), &indices, GL_STATIC_DRAW);
 
-    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 5, (void *)0);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, (void *)0);
     glEnableVertexAttribArray(0);
+    glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, (void *)(3 * sizeof(float)));
+    glEnableVertexAttribArray(1);
     // glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 5, (void *)(3 * sizeof(float)));
     // glEnableVertexAttribArray(1);
 
+    glGenVertexArrays(1, &m_lightVAO);
+    glBindVertexArray(m_lightVAO);
+    glBindBuffer(GL_ARRAY_BUFFER, m_vertexBuffer);
+    
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, sizeof(float) * 6, (void *)0);
+    glEnableVertexAttribArray(0);
 }
 
 void OpenGL::closeWindow()
@@ -190,27 +172,13 @@ void OpenGL::closeWindow()
     glfwTerminate();
 }
 
-// int OpenGL::retrieveInput()
-// {
-//     int key = g_key;
-//     if (g_key != 0)
-//     {
-//         g_key = 0;
-//         return key;
-//     }
-//     return g_key;
-// }
-
-
 void OpenGL::startFrame()
 {
     float currentFrame = glfwGetTime();
     m_delta_time -= currentFrame - m_last_frame;
     m_last_frame = currentFrame;
-    glClearColor(0.2, 0.2, 0.2, 1.0);
+    // glClearColor(0.2, 0.2, 0.2, 1.0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    m_shader->use();
-    glBindVertexArray(m_vertexArray);
 }
 
 void OpenGL::endFrame()
@@ -232,19 +200,34 @@ void OpenGL::drawSquare(unsigned int x, unsigned int y, struct s_color color)
 
 void OpenGL::drawCube()
 {
+    m_light_shader->use();
+    m_light_shader->setVec3("ObjectColor", 1.0f, 0.5f, 0.31f);
+    m_light_shader->setVec3("LightColor", 1.0f, 1.0f, 1.0f);
+    m_light_shader->setVec3("LightPos", 1.0f, 1.0f, 2.0f);
+
     glm::mat4 proj = glm::perspective(glm::radians(m_camera.getFOV()), (float)m_width / (float)m_height, 0.1f, 100.0f) ;
-    m_shader->setMat4("proj", proj);
+    m_light_shader->setMat4("proj", proj);
 
     glm::mat4 view = m_camera.get_view_matrix();
-    m_shader->setMat4("view", view);
+    m_light_shader->setMat4("view", view);
 
     glm::mat4 model = glm::mat4(1.0f);
-    model = glm::translate(model, glm::vec3(0.0f, 0.0f, 0.0f));
-    m_shader->setMat4("model", model);
+    m_light_shader->setMat4("model", model);
     
-    m_shader->setVec3("color", 1.0f, 0.0f, 1.0f);
+
+    glBindVertexArray(m_vertexArray);
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+
     m_shader->use();
-    
+    m_shader->setMat4("proj", proj);
+    m_shader->setMat4("view", view);
+
+    model = glm::mat4(1.0f);
+    model = glm::translate(model, glm::vec3(1.0f, 1.0f, 2.0f));
+    model = glm::scale(model, glm::vec3(0.5f));
+    m_shader->setMat4("model", model);
+
+    glBindVertexArray(m_lightVAO);
     glDrawArrays(GL_TRIANGLES, 0, 36);
 }
 
