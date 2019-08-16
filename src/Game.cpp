@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 09:48:23 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/15 15:52:03 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/16 09:33:26 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,9 @@ void Game::process_input(float deltaTime)
 {
     unsigned int key;
     key = glib->retrieveInput();
-    if (key == KEY_ESCAPE)
+    if (poll_key(KEY_ESC) == KEY_PRESSED)
         m_running = false;
+    
     glib->moveCamera(key, deltaTime);
     
 }

@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 10:27:24 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/14 11:17:49 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/16 10:48:31 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,14 +121,14 @@ enum keys
     KEY_KP_ADD = 334,
     KEY_KP_ENTER = 335,
     KEY_KP_EQUAL = 336,
-    KEY_KP_LEFT_SHIFT = 340,
-    KEY_KP_LEFT_CONTROL = 341,
-    KEY_KP_LEFT_ALT = 342,
-    KEY_KP_LEFT_SUPER = 343,
-    KEY_KP_RIGHT_SHIFT = 344,
-    KEY_KP_RIGHT_CONTROL = 345,
-    KEY_KP_RIGHT_ALT = 346,
-    KEY_KP_RIGHT_SUPER = 347,
+    KEY_LEFT_SHIFT = 340,
+    KEY_LEFT_CONTROL = 341,
+    KEY_LEFT_ALT = 342,
+    KEY_LEFT_SUPER = 343,
+    KEY_RIGHT_SHIFT = 344,
+    KEY_RIGHT_CONTROL = 345,
+    KEY_RIGHT_ALT = 346,
+    KEY_RIGHT_SUPER = 347,
     KEY_MENU = 348
 };
 

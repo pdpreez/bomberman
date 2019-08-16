@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 12:46:26 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/15 16:11:08 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/16 09:26:32 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 const float YAW = -90.0f;
 const float PITCH = 0.0f;
-const float SPEED = 0.001f;
+const float SPEED = 0.1f;
 const float SENSITIVITY = 0.01f;
 const float FOV = 65.0f;
 
