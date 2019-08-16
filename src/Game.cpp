@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 09:48:23 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/16 09:33:26 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/16 11:28:47 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,28 @@ IGlib *Game::open_glib(const char *path)
 
 void Game::process_input(float deltaTime)
 {
-    unsigned int key;
-    key = glib->retrieveInput();
-    if (poll_key(KEY_ESC) == KEY_PRESSED)
+    if (glib->retrieveInput(KEY_ESCAPE) == KEY_PRESSED)
         m_running = false;
+    if (glib->retrieveInput(KEY_UP) == KEY_PRESSED)
+        glib->moveCamera(KEY_UP, deltaTime);
+    if (glib->retrieveInput(KEY_DOWN) == KEY_PRESSED)
+        glib->moveCamera(KEY_DOWN, deltaTime);
+    if (glib->retrieveInput(KEY_LEFT) == KEY_PRESSED)
+        glib->moveCamera(KEY_LEFT, deltaTime);
+    if (glib->retrieveInput(KEY_RIGHT) == KEY_PRESSED)
+        glib->moveCamera(KEY_RIGHT, deltaTime);
+    if (glib->retrieveInput(KEY_W) == KEY_PRESSED)
+        glib->moveCamera(KEY_W, deltaTime);
+    if (glib->retrieveInput(KEY_A) == KEY_PRESSED)
+        glib->moveCamera(KEY_A, deltaTime);
+    if (glib->retrieveInput(KEY_S) == KEY_PRESSED)
+        glib->moveCamera(KEY_S, deltaTime);
+    if (glib->retrieveInput(KEY_D) == KEY_PRESSED)
+        glib->moveCamera(KEY_D, deltaTime);
+    if (glib->retrieveInput(KEY_R) == KEY_PRESSED)
+        glib->moveCamera(KEY_R, deltaTime);
+    if (glib->retrieveInput(KEY_F) == KEY_PRESSED)
+        glib->moveCamera(KEY_F, deltaTime);
     
-    glib->moveCamera(key, deltaTime);
     
 }

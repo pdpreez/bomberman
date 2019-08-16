@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/14 12:59:07 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/16 10:59:14 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/16 11:21:49 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,16 +190,16 @@ void OpenGL::closeWindow()
     glfwTerminate();
 }
 
-int OpenGL::retrieveInput()
-{
-    int key = g_key;
-    if (g_key != 0)
-    {
-        g_key = 0;
-        return key;
-    }
-    return g_key;
-}
+// int OpenGL::retrieveInput()
+// {
+//     int key = g_key;
+//     if (g_key != 0)
+//     {
+//         g_key = 0;
+//         return key;
+//     }
+//     return g_key;
+// }
 
 
 void OpenGL::startFrame()
@@ -291,12 +291,14 @@ extern "C"
 int OpenGL::retrieveInput(int key)
 {
     key = convert_keys(key);
-    return (glfwGetKey(m_window, key));
+    if (glfwGetKey(m_window, key) == GLFW_PRESS)
+        return KEY_PRESSED;
+    else
+        return -1;
 }
 
 int OpenGL::convert_keys(int key)
 {
-    int newkey = -1;
     switch (key)
     {
         case KEY_SPACE:         return GLFW_KEY_SPACE;
@@ -409,7 +411,7 @@ int OpenGL::convert_keys(int key)
         case KEY_RIGHT_ALT:     return GLFW_KEY_RIGHT_ALT;
         case KEY_RIGHT_SUPER:   return GLFW_KEY_RIGHT_SUPER;
         case KEY_MENU:          return GLFW_KEY_MENU;
-        default:                return key;
+        default:                return -1;
     }
     
 

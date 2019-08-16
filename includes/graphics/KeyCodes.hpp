@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/31 10:27:24 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/16 10:48:31 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/16 11:20:44 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #define KEYCODES_HPP
 
 // Keycodes are direct copies of GLFW keycodes
+
+#define KEY_PRESSED 1
 
 enum keys
 {
