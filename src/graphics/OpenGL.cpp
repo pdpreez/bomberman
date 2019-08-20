@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/14 12:59:07 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/16 13:11:13 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/20 16:18:29 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,49 +78,49 @@ void OpenGL::createWindow()
     int height, width;
     
 
-    float vertices[] = {
-    -0.5f, -0.5f, -0.5f,  0.0f, 0.0f, -1.0f,
-     0.5f, -0.5f, -0.5f,  1.0f, 0.0f, -1.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f, -1.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f, -1.0f,
-    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f, -1.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, 0.0f, -1.0f,
+float vertices[] = {
+        -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+         0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+         0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+         0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+        -0.5f,  0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f,  0.0f, -1.0f,
 
-    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f, 1.0f,
-     0.5f, -0.5f,  0.5f,  1.0f, 0.0f, 1.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 1.0f, 1.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 1.0f, 1.0f,
-    -0.5f,  0.5f,  0.5f,  0.0f, 1.0f, 1.0f,
-    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f, 1.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+         0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+         0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+         0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+        -0.5f,  0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f,  0.0f,  1.0f,
 
-    -0.5f,  0.5f,  0.5f,  1.0f, 0.0f, 0.0f,
-    -0.5f,  0.5f, -0.5f,  1.0f, 1.0f, 0.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f, 0.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f, 0.0f,
-    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f, 0.0f,
-    -0.5f,  0.5f,  0.5f,  1.0f, 0.0f, 0.0f,
+        -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+        -0.5f,  0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+        -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+        -0.5f, -0.5f, -0.5f, -1.0f,  0.0f,  0.0f,
+        -0.5f, -0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
+        -0.5f,  0.5f,  0.5f, -1.0f,  0.0f,  0.0f,
 
-     0.5f,  0.5f,  0.5f,  1.0f, 0.0f, 0.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f, 0.0f,
-     0.5f, -0.5f, -0.5f,  0.0f, 1.0f, 0.0f,
-     0.5f, -0.5f, -0.5f,  0.0f, 1.0f, 0.0f,
-     0.5f, -0.5f,  0.5f,  0.0f, 0.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 0.0f, 0.0f,
+         0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+         0.5f,  0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+         0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+         0.5f, -0.5f, -0.5f,  1.0f,  0.0f,  0.0f,
+         0.5f, -0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
+         0.5f,  0.5f,  0.5f,  1.0f,  0.0f,  0.0f,
 
-    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f, 0.0f,
-     0.5f, -0.5f, -0.5f,  1.0f, 1.0f, 0.0f,
-     0.5f, -0.5f,  0.5f,  1.0f, 0.0f, 0.0f,
-     0.5f, -0.5f,  0.5f,  1.0f, 0.0f, 0.0f,
-    -0.5f, -0.5f,  0.5f,  0.0f, 0.0f, 0.0f,
-    -0.5f, -0.5f, -0.5f,  0.0f, 1.0f, 0.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+         0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
+         0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+         0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+        -0.5f, -0.5f,  0.5f,  0.0f, -1.0f,  0.0f,
+        -0.5f, -0.5f, -0.5f,  0.0f, -1.0f,  0.0f,
 
-    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f, 0.0f,
-     0.5f,  0.5f, -0.5f,  1.0f, 1.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 0.0f, 0.0f,
-     0.5f,  0.5f,  0.5f,  1.0f, 0.0f, 0.0f,
-    -0.5f,  0.5f,  0.5f,  0.0f, 0.0f, 0.0f,
-    -0.5f,  0.5f, -0.5f,  0.0f, 1.0f, 0.0f
-};
+        -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+         0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,
+         0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+         0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+        -0.5f,  0.5f,  0.5f,  0.0f,  1.0f,  0.0f,
+        -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f
+    };
 
 
     m_window = glfwCreateWindow(m_width, m_height, "Bomberman", nullptr, nullptr);
@@ -200,12 +200,15 @@ void OpenGL::drawSquare(unsigned int x, unsigned int y, struct s_color color)
 
 void OpenGL::drawCube()
 {
+    glm::vec3 lightPos(1.0f, -1.0f, 2.0f);
+    lightPos.x = sin(glfwGetTime() / 2.0f) * 10;
     m_light_shader->use();
-    m_light_shader->setVec3("ObjectColor", 1.0f, 0.5f, 0.31f);
+    m_light_shader->setVec3("ObjectColor", 1.0f, 0.2f, 0.2f);
     m_light_shader->setVec3("LightColor", 1.0f, 1.0f, 1.0f);
-    m_light_shader->setVec3("LightPos", 1.0f, 1.0f, 2.0f);
-
-    glm::mat4 proj = glm::perspective(glm::radians(m_camera.getFOV()), (float)m_width / (float)m_height, 0.1f, 100.0f) ;
+    m_light_shader->setVec3("LightPos", lightPos);
+    m_light_shader->setVec3("ViewPos", m_camera.getPosition());
+    
+    glm::mat4 proj = glm::perspective(glm::radians(m_camera.getFOV()), (float)m_width / (float)m_height, 0.1f, 100.0f);
     m_light_shader->setMat4("proj", proj);
 
     glm::mat4 view = m_camera.get_view_matrix();
@@ -214,17 +217,20 @@ void OpenGL::drawCube()
     glm::mat4 model = glm::mat4(1.0f);
     m_light_shader->setMat4("model", model);
     
-
     glBindVertexArray(m_vertexArray);
     glDrawArrays(GL_TRIANGLES, 0, 36);
 
+    model = glm::translate(model, glm::vec3(2.0f, 1.0f, 1.0f));
+    m_shader->setMat4("model", model);
+    glDrawArrays(GL_TRIANGLES, 0, 36);
+    
     m_shader->use();
     m_shader->setMat4("proj", proj);
     m_shader->setMat4("view", view);
 
     model = glm::mat4(1.0f);
-    model = glm::translate(model, glm::vec3(1.0f, 1.0f, 2.0f));
     model = glm::scale(model, glm::vec3(0.5f));
+    model = glm::translate(model, lightPos);
     m_shader->setMat4("model", model);
 
     glBindVertexArray(m_lightVAO);

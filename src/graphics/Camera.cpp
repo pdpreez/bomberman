@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 12:51:36 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/16 12:37:20 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/20 16:15:54 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ Camera::~Camera()
     
 }
 
+glm::vec3 Camera::getPosition()
+{
+    return m_pos;
+}
+
 glm::mat4 Camera::get_view_matrix()
 {
     return glm::lookAt(m_pos, m_pos + m_front, m_up);
@@ -78,9 +83,9 @@ void Camera::keyboard_move(CameraMovement dir, float deltaTime)
     float speed = 15;
     float velocity = m_movement_speed;
     if (dir == FORWARD)
-        m_pos.z += m_front.z * velocity;
+        m_pos += m_front * velocity;
     else if (dir == BACKWARD)
-        m_pos.z -= m_front.z * velocity;
+        m_pos -= m_front * velocity;
     else if (dir == LEFT)
         m_pos -= m_right * velocity;
     else if (dir == RIGHT)

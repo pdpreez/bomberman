@@ -6,7 +6,7 @@
 /*   By: ppreez <ppreez@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/12 12:46:26 by ppreez            #+#    #+#             */
-/*   Updated: 2019/08/16 11:25:00 by ppreez           ###   ########.fr       */
+/*   Updated: 2019/08/20 13:07:42 by ppreez           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ class Camera
         ~Camera();
 
         float getFOV();
+        glm::vec3 getPosition();
         glm::mat4 get_view_matrix();
         void keyboard_move(CameraMovement dir, float deltaTime);
     private:
